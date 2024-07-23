@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/android-chrome-512x512.png";
+import { FiSun, FiMoon } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +64,42 @@ const Navbar = () => {
               >
                 Contact
               </Link> */}
+              <Link
+                to="/business"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Business
+              </Link>
+              <Link
+                to="/entertainment"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Entertainment
+              </Link>
+              <Link
+                to="/health"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Health
+              </Link>
+              <Link
+                to="/science"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Science
+              </Link>
+              <Link
+                to="/technology"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Technology
+              </Link>
+              <Link
+                to="/sports"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
+              >
+                Sports
+              </Link>
             </div>
             <div className="flex items-center mt-4 lg:mt-0">
               {/* <SignedOut>
