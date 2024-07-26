@@ -17,7 +17,7 @@
 
 /* Style the track (progress bar) */
 ::-webkit-scrollbar-track {
-  background: ; /* Background color of the track */
+  background: white; /* Background color of the track */
 }
 
 /* Style the handle (scroll thumb) */
