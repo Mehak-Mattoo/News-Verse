@@ -5,7 +5,7 @@ export default function NewsItem(props) {
 
   return (
     <>
-      <div className="card m-2  p-4 rounded-lg bg-[#B43F3F] dark:bg-[#1e293b]">
+      <div className="card m-2  p-4 rounded-lg bg-[#C36A2D] dark:bg-[#1e293b]">
         {/* if there is no image url, then a default image will be shown*/}
         <img
           src={
@@ -22,7 +22,7 @@ export default function NewsItem(props) {
           </h5>
 
           {description && (
-            <p className="card-text dark:text-gray-300 text-red-200 text-sm mb-3 md:text-base text-center">
+            <p className="card-text dark:text-gray-300 text-orange-100 text-sm mb-3 md:text-base text-center">
               {description}
             </p>
           )}
@@ -30,14 +30,14 @@ export default function NewsItem(props) {
             rel="noreferrer"
             href={newsURL}
             target="_blank"
-            className="bg-[#FF8225] dark:bg-orange-600 flex justify-center w-fit text-white mx-auto py-1 px-3 rounded-lg hover:bg-[#ec7011] dark:hover:bg-[#ee6903]"
+            className="bg-[#ffb073] dark:bg-orange-600 dark:text-white flex justify-center w-fit font-medium mx-auto py-1 px-3 rounded-lg hover:bg-[#ffa35c] dark:hover:bg-[#ee6903]"
           >
             Read More
           </a>
 
-          <div className="items-center justify-between text-xs text-red-300 mt-3">
+          <div className="items-center justify-between text-xs text-orange-200  dark:text-gray-400 mt-3">
             {/* <p> {author ? author : "Unknown"}</p> */}
-            <p className="card-text text-end  dark:text-gray-400 ">
+            <p className="card-text text-end  ">
               {new Date(date).toLocaleString()}
             </p>
           </div>

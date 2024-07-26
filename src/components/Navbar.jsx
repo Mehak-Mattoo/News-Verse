@@ -90,7 +90,7 @@ const Navbar = () => {
                 Sports
               </Link>
             </div>
-            <div className="flex items-center justify-end mt-4 lg:mt-0 lg:flex-shrink-0">
+            <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button
                 onClick={toggleDarkMode}
                 className="flex ml-2 items-center  bg-gray-200 dark:bg-gray-500  py-2 px-2 mr-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
