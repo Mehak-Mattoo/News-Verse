@@ -1,5 +1,5 @@
 import React from "react";
-// import newshome from "../components/images/news-home.png";
+import newshome from "../images/home.jpg";
 
 export default function Home() {
   const container = {
@@ -22,9 +22,12 @@ export default function Home() {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row min-h-screen p-2">
-        <div className="container mt-5 pt-5 flex flex-col w-full md:w-1/2 items-center justify-center">
-          <h2 className=" text-red-400 font-extrabold  text-4xl md:text-7xl mb-8">
+      <div
+        className="flex flex-col md:flex-row max-h-screen bg-[#EEE1B3]
+      "
+      >
+        <div className="container mt-5 pt-5 flex flex-col w-full md:w-1/2 items-center justify-center pl-5">
+          <h2 className=" text-[#FB857C] font-extrabold  text-4xl md:text-7xl mb-8">
             Global Headlines to Your Fingertips
           </h2>
           <div>
@@ -41,11 +44,11 @@ export default function Home() {
           </p> */}
         </div>
         <div className="w-full md:w-1/2">
-          {/* <img
+          <img
             src={newshome}
             alt="news home"
             className="object-cover w-full h-full"
-          />*/}
+          />
         </div>
       </div>
     </>

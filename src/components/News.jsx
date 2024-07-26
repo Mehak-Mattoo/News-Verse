@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
@@ -49,6 +48,15 @@ const News = (props) => {
     setTotalResults(parsedData.totalResults);
   };
 
+  const getItemClass = (index) => {
+    // First check if it's the first item in the row
+    if ((index + 1) % 4 === 0) {
+      return "col-span-1";
+    }
+    // Otherwise, return the class for three items
+    return "col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1";
+  };
+
   return (
     <>
       <h1
@@ -70,11 +78,18 @@ const News = (props) => {
         hasMore={articles.length !== totalResults}
         loader={loading && <Spinner />}
       >
-        <div className="container">
-          <div className="row">
-            {articles.map((element) => {
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {articles.map((element, index) => {
               return (
-                <div className="col-md-4" key={element.url}>
+                <div
+                  className={`${
+                    (index + 1) % 4 === 0
+                      ? "md:col-span-1"
+                      : "md:col-span-1 lg:col-span-1 xl:col-span-1"
+                  }`}
+                  key={element.url}
+                >
                   <NewsItem
                     title={element.title ? element.title : ""}
                     description={
@@ -87,7 +102,6 @@ const News = (props) => {
                     author={element.author}
                     date={element.publishedAt}
                   />
-                  {/* decription only upto 88 characters will be shown*/}
                 </div>
               );
             })}
