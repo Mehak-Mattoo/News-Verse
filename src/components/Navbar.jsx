@@ -15,10 +15,11 @@ const Navbar = () => {
     setIsDarkMode(!isDarkMode);
     document.documentElement.classList.toggle("dark");
   };
+
   return (
     <>
-      <nav className="bg-[#EEE1B3]  dark:bg-[#00215E] p-2">
-        <div className="container mx-auto flex items-center  flex-wrap">
+      <nav className="bg-[#F8EDED] dark:bg-[#0f172a] p-2">
+        <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
               <img src={logo} alt="logo" className="w-[3rem] mr-2" />
@@ -45,83 +46,51 @@ const Navbar = () => {
               isOpen ? "block" : "hidden"
             } lg:flex lg:items-center lg:w-auto mt-4 lg:mt-0 transition duration-600 ease-out`}
           >
-            <div className="lg:flex-grow items-center  lg:flex lg:justify-between">
+            <div className="lg:flex-grow items-center lg:flex lg:justify-start">
               <Link
                 to="/"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
               >
                 Home
               </Link>
-              {/* <Link
-                to="/about"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
-              >
-                About
-              </Link>
-              <Link
-                to="/contact"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 mr-4"
-              >
-                Contact
-              </Link> */}
               <Link
                 to="/business"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
               >
                 Business
               </Link>
               <Link
                 to="/entertainment"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
               >
                 Entertainment
               </Link>
               <Link
                 to="/health"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
               >
                 Health
               </Link>
               <Link
                 to="/science"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
               >
                 Science
               </Link>
               <Link
                 to="/technology"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
               >
                 Technology
               </Link>
               <Link
                 to="/sports"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-800 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
               >
                 Sports
               </Link>
             </div>
-            <div className="flex items-center justify-between mt-4 lg:mt-0">
-              {/* <SignedOut>
-                <SignInButton className="bg-white text-sky-400 font-semibold rounded-md py-1 px-2" />
-              </SignedOut>
-              <SignedIn>
-                <div className="flex items-center text-white">
-                  {isLoaded && isSignedIn && user && (
-                    <>
-                      {/* <span className="mr-2">{user.firstName}</span> 
-                      <UserButton />
-                      <Link
-                        to="/profile"
-                        className="block lg:inline-block lg:mt-0 font-semibold text-white hover:text-gray-100 ml-4"
-                      >
-                        My Profile
-                      </Link>
-                    </>
-                  )}
-                </div>
-              </SignedIn> */}
-
+            <div className="flex items-center justify-end mt-4 lg:mt-0 lg:flex-shrink-0">
               <button
                 onClick={toggleDarkMode}
                 className="flex ml-2 items-center  bg-gray-200 dark:bg-gray-500  py-2 px-2 mr-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"

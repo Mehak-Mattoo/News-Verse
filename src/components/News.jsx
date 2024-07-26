@@ -16,7 +16,11 @@ const News = (props) => {
 
   const updateNews = async () => {
     props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=2bb0ffbb32104c66b235dce680e12356&page=${page}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${
+      props.country
+    }&category=${props.category}&apiKey=${
+      import.meta.env.VITE_NEWS_API_KEY
+    }&page=${page}&pageSize=${props.pageSize}`;
     setLoading(true);
     let data = await fetch(url);
     props.setProgress(30);
@@ -37,77 +41,69 @@ const News = (props) => {
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
-    }&category=${props.category}&apiKey=2bb0ffbb32104c66b235dce680e12356&page=${
-      page + 1
-    }&pageSize=${props.pageSize}`;
+    }&category=${props.category}&apiKey=${
+      import.meta.env.VITE_NEWS_API_KEY
+    }&page=${page + 1}&pageSize=${props.pageSize}`;
     setPage(page + 1);
-    console.log(url);
     let data = await fetch(url);
     let parsedData = await data.json();
     setArticles(articles.concat(parsedData.articles));
     setTotalResults(parsedData.totalResults);
   };
 
-  const getItemClass = (index) => {
-    // First check if it's the first item in the row
-    if ((index + 1) % 4 === 0) {
-      return "col-span-1";
-    }
-    // Otherwise, return the class for three items
-    return "col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1";
-  };
-
   return (
     <>
-      <h1
-        className="text-center"
-        style={{
-          margin: "3.5rem 0rem",
-          marginTop: "7rem",
-          color: "#FF6464",
-          fontWeight: "900",
-          fontSize: "3.2rem",
-        }}
-      >
-        {capitalizeFirstLetter(props.category)} News
-      </h1>
+      <div className="bg-[#F8EDED]  dark:bg-[#0f172a]">
+        <h1
+          className="text-center"
+          style={{
+            padding: "3.5rem 0rem",
+            paddingTop: "7rem",
+            color: "#FF8225",
+            fontWeight: "900",
+            fontSize: "3.2rem",
+          }}
+        >
+          {capitalizeFirstLetter(props.category)} News
+        </h1>
 
-      <InfiniteScroll
-        dataLength={articles.length}
-        next={fetchMoreData}
-        hasMore={articles.length !== totalResults}
-        loader={loading && <Spinner />}
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {articles.map((element, index) => {
-              return (
-                <div
-                  className={`${
-                    (index + 1) % 4 === 0
-                      ? "md:col-span-1"
-                      : "md:col-span-1 lg:col-span-1 xl:col-span-1"
-                  }`}
-                  key={element.url}
-                >
-                  <NewsItem
-                    title={element.title ? element.title : ""}
-                    description={
-                      element.description
-                        ? element.description.slice(0, 88)
-                        : ""
-                    }
-                    imgURL={element.urlToImage}
-                    newsURL={element.url}
-                    author={element.author}
-                    date={element.publishedAt}
-                  />
-                </div>
-              );
-            })}
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={fetchMoreData}
+          hasMore={articles.length !== totalResults}
+          loader={loading && <Spinner />}
+        >
+          <div className="container mx-auto px-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {articles.map((element, index) => {
+                return (
+                  <div
+                    className={`${
+                      (index + 1) % 4 === 0
+                        ? "md:col-span-1"
+                        : "md:col-span-1 lg:col-span-1 xl:col-span-1"
+                    }`}
+                    key={`${element.url}-${index}`} // Ensure uniqueness
+                  >
+                    <NewsItem
+                      title={element.title ? element.title : ""}
+                      description={
+                        element.description
+                          ? element.description.slice(0, 88)
+                          : ""
+                      }
+                      imgURL={element.urlToImage}
+                      newsURL={element.url}
+                      author={element.author}
+                      date={element.publishedAt}
+                    />
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </InfiniteScroll>
+        </InfiniteScroll>
+      </div>
     </>
   );
 };

@@ -1,37 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import newshome from "../images/home.jpg";
 
 export default function Home() {
-  const container = {
-    position: " relative" /* Set the container's position to relative */,
-    minHeight: "100%",
-    color: "#FF6464",
-    fontWeight: "900",
-    fontSize: "3.5vw",
-    marginBottom: "2rem",
-  };
-
-  const name = {
-    position: "absolute",
-    bottom: "0",
-    left: "0",
-    fontSize: "1.5vw",
-    color: "#263A29",
-    padding: "1rem",
-  };
-
+  useEffect(() => {
+    document.title = "News Verse - Home";
+  }, []);
   return (
     <>
-      <div
-        className="flex flex-col md:flex-row max-h-screen bg-[#EEE1B3]
-      "
-      >
+      <div className="flex flex-col md:flex-row max-h-screen bg-[#F8EDED] dark:bg-[#0f172a] ">
         <div className="container mt-5 pt-5 flex flex-col w-full md:w-1/2 items-center justify-center pl-5">
-          <h2 className=" text-[#FB857C] font-extrabold  text-4xl md:text-7xl mb-8">
+          <h2 className=" text-[#FF8225] font-extrabold text-3xl md:text-7xl mb-8">
             Global Headlines to Your Fingertips
           </h2>
           <div>
-            <p>
+            <p className="dark:text-gray-300 text-orange-400 font-medium ">
               News Verse is built using React to deliver live events and latest
               news as it happens. My responsive design adapts to different
               screen sizes to bring you the best content forward. Experience
@@ -43,7 +25,7 @@ export default function Home() {
             Made by Mehak Mattoo &hearts;
           </p> */}
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="hidden md:flex md:w-1/2">
           <img
             src={newshome}
             alt="news home"
