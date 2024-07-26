@@ -10,3 +10,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+/* Style the scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the entire scrollbar */
+}
+
+/* Style the track (progress bar) */
+::-webkit-scrollbar-track {
+  background: ; /* Background color of the track */
+}
+
+/* Style the handle (scroll thumb) */
+::-webkit-scrollbar-thumb {
+  background: #e4a276; /* Background color of the handle */
+  border-radius: 6px; /* Rounded corners of the handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(240, 109, 61); /* Background color when hovering */
+}
