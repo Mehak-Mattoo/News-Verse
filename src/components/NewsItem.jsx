@@ -5,7 +5,7 @@ export default function NewsItem(props) {
 
   return (
     <>
-      <div className="card m-2  rounded-lg bg-[#C36A2D] dark:bg-[#1e293b]">
+      <div className="card m-2  rounded-lg bg-[#F7DCB9] dark:bg-[#1e293b]">
         {/* if there is no image url, then a default image will be shown*/}
         <img
           src={
@@ -17,12 +17,12 @@ export default function NewsItem(props) {
           alt="..."
         />
         <div className="card-body p-4">
-          <h5 className="card-title text-center text-base text-white md:text-lg dark:text-sky-300 mb-3 ">
+          <h5 className="card-title text-center text-base  md:text-lg dark:text-sky-300 mb-3 ">
             {title}
           </h5>
 
           {description && (
-            <p className="card-text dark:text-gray-300 text-orange-100 text-sm mb-3 md:text-base text-center">
+            <p className="card-text dark:text-gray-300 text-orange-500 text-sm mb-3 md:text-base text-center">
               {description}
             </p>
           )}

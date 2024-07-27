@@ -45,14 +45,14 @@ const SearchResults = () => {
   }, [query]);
 
   return (
-    <main className="px-10 py-5 min-h-screen bg-[#C36A2D] dark:bg-[#1e293b]">
+    <main className="px-10 min-h-screen bg-[#C36A2D] dark:bg-[#1e293b]">
       {error && (
         <div>
           {" "}
           <Error />{" "}
         </div>
       )}
-      <h2 className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold mb-5 text-center text-white">
+      <h2 className="  text-base sm:text-lg md:text-2xl lg:text-3xl pt-[10rem] font-bold mb-5 text-center text-white">
         Search Results for: {query}
       </h2>
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../images/logo.png";
 import { FiSun, FiMoon } from "react-icons/fi";
 import SearchBar from "./SearchBar";
@@ -17,9 +17,15 @@ const Navbar = () => {
     document.documentElement.classList.toggle("dark");
   };
 
+  const navigate = useNavigate();
+
+  const handleSearch = (query) => {
+    navigate(`/search/${query}`);
+  };
+
   return (
     <>
-      <nav className="bg-[#F8EDED] mb-4 fixed w-full dark:bg-[#0f172a] p-2 z-10">
+      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] p-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
@@ -90,8 +96,7 @@ const Navbar = () => {
               >
                 Sports
               </Link>
-
-              <SearchBar />
+              <SearchBar onSearch={handleSearch} />
             </div>
             <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button

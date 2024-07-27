@@ -1,7 +1,12 @@
 import { useState } from "react";
-import "./App.css";
+import "./index.css";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 import Home from "./components/Home";
 import News from "./components/News";
@@ -9,6 +14,11 @@ import React from "react";
 import SearchResults from "./components/SearchResults";
 
 function App() {
+  // const navigate = useNavigate();
+
+  // const handleSearch = (query) => {
+  //   navigate(`/search/${query}`);
+  // };
   const [progress, setProgress] = useState(0);
   return (
     <>
