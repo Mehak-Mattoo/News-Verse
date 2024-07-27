@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import newshome from "../images/news-home-.png";
 import About from "./About";
 import Topheadlines from "./Topheadlines";
+import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
 
 export default function Home() {
   useEffect(() => {
@@ -24,9 +26,7 @@ export default function Home() {
           </h2>
           <div>
             <p className="dark:text-gray-400 font-medium text-orange-400">
-              Get real-time breaking news from around the world. News Verse
-              brings you the latest headlines and in-depth coverage, tailored to
-              your interests.
+              Get real-time breaking news from around the world.
             </p>
           </div>
           {/* <p className="absolute bottom-0 left-0 text-green-900 text-1.5vw p-4">
@@ -35,9 +35,9 @@ export default function Home() {
         </div>
       </div>
 
-      <About />
+      {/* <Topheadlines /> */}
 
-      <Topheadlines />
+      <About />
     </>
   );
 }

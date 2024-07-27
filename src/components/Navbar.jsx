@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/android-chrome-512x512.png";
 import { FiSun, FiMoon } from "react-icons/fi";
+import SearchResults from "./SearchResults";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,6 +91,8 @@ const Navbar = () => {
               >
                 Sports
               </Link>
+
+              <SearchBar />
             </div>
             <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button

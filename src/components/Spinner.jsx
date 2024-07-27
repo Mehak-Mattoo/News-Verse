@@ -3,8 +3,8 @@ import React from "react";
 const loaderStyles = `
 .loader, .loader:before, .loader:after {
   border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
+  width: 3.5em;
+  height: 3.5em;
   animation-fill-mode: both;
   animation: bblFadInOut 1.8s infinite ease-in-out;
 }

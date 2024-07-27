@@ -6,6 +6,7 @@ import LoadingBar from "react-top-loading-bar";
 import Home from "./components/Home";
 import News from "./components/News";
 import React from "react";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path="/news" element={<Home />} />
           <Route exact path="/" element={<Home />} />
+          <Route path="/search/:query" element={<SearchResults />} />
           <Route
             exact
             path="/business"

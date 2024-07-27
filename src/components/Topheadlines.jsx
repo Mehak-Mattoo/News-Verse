@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Spinner from "./Spinner";
 
 const Topheadlines = () => {
   const [headlines, setHeadlines] = useState([]);
@@ -7,11 +8,11 @@ const Topheadlines = () => {
 
   const fetchNews = async () => {
     const url =
-      "https://real-time-news-data.p.rapidapi.com/top-headlines?limit=10&country=US&lang=en";
+      "https://real-time-news-data.p.rapidapi.com/top-headlines?limit=9&country=IN&lang=en";
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "f3fb94004emsh4e45e9d4d706ab3p1df26bjsn9c485daaa37c",
+        "x-rapidapi-key": import.meta.env.VITE_TOP_HEADLINES_API_KEY,
         "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
       },
     };
@@ -31,12 +32,17 @@ const Topheadlines = () => {
     fetchNews();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
   if (error) return <div>Error fetching news: {error.message}</div>;
 
   return (
-    <div className="p-4 bg-[#C36A2D] dark:bg-[#1e293b]">
-      <h2 className="text-center text-2xl font-bold text-white mb-4">
+    <div className="px-10 py-5 bg-[#C36A2D] dark:bg-[#1e293b]">
+      <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-6xl dark:text-[#C36A2D] font-extrabold  text-orange-200 mb-12">
         Top Headlines
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

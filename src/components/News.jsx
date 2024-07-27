@@ -3,6 +3,8 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import SearchResults from "./SearchResults";
+import SearchBar from "./SearchBar";
 
 const News = (props) => {
   const [articles, setArticles] = useState([]);
