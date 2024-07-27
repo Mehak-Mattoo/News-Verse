@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Monoton&family=Shrikhand&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +14,7 @@
 }
 /* Style the scrollbar */
 ::-webkit-scrollbar {
-  width: 12px; /* Width of the entire scrollbar */
+  width: 7px; /* Width of the entire scrollbar */
 }
 
 /* Style the track (progress bar) */
@@ -22,7 +24,7 @@
 
 /* Style the handle (scroll thumb) */
 ::-webkit-scrollbar-thumb {
-  background: #e4a276; /* Background color of the handle */
+  background: rgb(247, 125, 77); /* Background color of the handle */
   border-radius: 6px; /* Rounded corners of the handle */
 }
 

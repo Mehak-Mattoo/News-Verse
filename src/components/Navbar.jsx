@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#F8EDED] dark:bg-[#0f172a] p-2">
+      <nav className="bg-[#F8EDED] mb-4 fixed w-full dark:bg-[#0f172a] p-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
@@ -51,43 +51,43 @@ const Navbar = () => {
             <div className="lg:flex-grow items-center lg:flex lg:justify-start">
               <Link
                 to="/"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Home
               </Link>
               <Link
                 to="/business"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Business
               </Link>
               <Link
                 to="/entertainment"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Entertainment
               </Link>
               <Link
                 to="/health"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Health
               </Link>
               <Link
                 to="/science"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Science
               </Link>
               <Link
                 to="/technology"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Technology
               </Link>
               <Link
                 to="/sports"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold mr-10 dark:text-orange-500 text-orange-400 hover:text-orange-500 "
               >
                 Sports
               </Link>
@@ -97,7 +97,18 @@ const Navbar = () => {
             <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button
                 onClick={toggleDarkMode}
-                className="flex ml-2 items-center  bg-gray-200 dark:bg-gray-500  py-2 px-2 mr-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100"
+                className={`flex ml-2 items-center p-3 mr-3 rounded-lg 
+    ${
+      isDarkMode
+        ? "bg-gray-500 dark:bg-gray-600 text-gray-100"
+        : "bg-orange-400 dark:bg-gray-500 text-white"
+    }
+    hover:${
+      isDarkMode
+        ? "bg-gray-700 dark:bg-gray-800"
+        : "bg-orange-600 dark:bg-gray-600"
+    }
+  `}
               >
                 {isDarkMode ? <FiMoon /> : <FiSun />}
               </button>

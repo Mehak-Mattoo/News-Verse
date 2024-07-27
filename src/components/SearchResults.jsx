@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "./Spinner";
+import Error from "./Error";
 
 const SearchResults = () => {
   const { query } = useParams();
@@ -45,7 +46,12 @@ const SearchResults = () => {
 
   return (
     <main className="px-10 py-5 min-h-screen bg-[#C36A2D] dark:bg-[#1e293b]">
-      {error && <div>Error fetching news: {error.message}</div>}
+      {error && (
+        <div>
+          {" "}
+          <Error />{" "}
+        </div>
+      )}
       <h2 className="text-base sm:text-lg md:text-2xl lg:text-3xl font-bold mb-5 text-center text-white">
         Search Results for: {query}
       </h2>
