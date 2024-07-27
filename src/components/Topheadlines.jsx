@@ -48,7 +48,7 @@ const Topheadlines = () => {
     );
 
   return (
-    <div className="px-10 py-5 bg-[#C36A2D] dark:bg-[#1e293b]">
+    <div className="px-10 py-5 bg-[#C36A2D] dark:bg-[#0f172a]">
       <h2 className="text-xl  sm:text-2xl md:text-4xl lg:text-6xl  dark:text-orange-500 font-extrabold  text-orange-200 mb-12">
         Top Headlines
       </h2>

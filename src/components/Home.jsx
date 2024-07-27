@@ -13,7 +13,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex bg-[#F8EDED] items-center flex-col md:flex-row h-2/4 md:min-h-screen dark:bg-[#0f172a] ">
+      <div className="flex bg-[#F7DCB9] items-center flex-col md:flex-row h-2/4 md:min-h-screen dark:bg-[#0f172a] ">
         <div className=" md:w-1/2">
           <img
             src={newshome}
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <Topheadlines /> */}
+      <Topheadlines />
 
       <About />
 

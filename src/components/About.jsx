@@ -7,14 +7,14 @@ import { RiNavigationFill } from "react-icons/ri";
 const features = [
   {
     icon: (
-      <BsCalendarEventFill className="text-3xl md:text-5xl text-[#FF8225]" />
+      <BsCalendarEventFill className="text-3xl md:text-4xl text-[#FF8225]  dark:text-white" />
     ),
     title: "Live Events",
     description: "Stay updated with live events as they happen.",
   },
   {
     icon: (
-      <MdOutlineScreenshot className="text-3xl md:text-6xl text-[#FF8225]" />
+      <MdOutlineScreenshot className="text-3xl md:text-4xl text-[#FF8225]  dark:text-white" />
     ),
     title: "Responsive Design",
     description:
@@ -22,25 +22,31 @@ const features = [
   },
   {
     icon: (
-      <BsGlobeAsiaAustralia className="text-3xl md:text-5xl text-[#FF8225]" />
+      <BsGlobeAsiaAustralia className="text-3xl md:text-4xl text-[#FF8225] dark:text-white" />
     ),
     title: "Global Coverage",
     description: "Get the latest news from around the world.",
   },
   {
-    icon: <RiNavigationFill className="text-3xl md:text-5xl text-[#FF8225]" />,
+    icon: (
+      <RiNavigationFill className="text-3xl md:text-4xl text-[#FF8225]  dark:text-white" />
+    ),
     title: "Easy Navigation",
     description:
       "Easily navigate through news articles organized into different categories.",
   },
   {
-    icon: <BsSearch className="text-3xl md:text-5xl text-[#FF8225]" />,
+    icon: (
+      <BsSearch className="text-3xl md:text-4xl text-[#FF8225]  dark:text-white" />
+    ),
     title: "Search Functionality",
     description: "Easily search for any news articles ",
   },
 
   {
-    icon: <MdDarkMode className="text-3xl md:text-5xl text-[#FF8225]" />,
+    icon: (
+      <MdDarkMode className="text-3xl md:text-4xl text-[#FF8225]  dark:text-white" />
+    ),
     title: "Dark Mode",
     description: "Read articles at night by using my built-in dark mode ",
   },
@@ -62,7 +68,7 @@ const About = () => {
               <div className="flex items-center justify-center h-30 mb-4">
                 {feature.icon}
               </div>
-              <h3 className="text-lg md:text-2xl font-bold text-center text-gray-800 dark:text-white mb-2">
+              <h3 className="text-lg md:text-2xl font-bold text-center text-gray-800  dark:text-sky-500 mb-2">
                 {feature.title}
               </h3>
               <p className="text-sm md:text-base text-center text-gray-600 dark:text-gray-300">

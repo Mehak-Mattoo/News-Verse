@@ -55,7 +55,7 @@ const News = (props) => {
 
   return (
     <>
-      <div className="bg-[#F8EDED]  dark:bg-[#0f172a]">
+      <div className="bg-[#F7DCB9] min-h-screen dark:bg-[#0f172a]">
         <h1
           className="text-center"
           style={{
