@@ -25,12 +25,11 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] p-2 z-10">
+      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] py-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
-            <Link to="/" className="flex items-center">
-              <img src={logo} alt="logo" className="w-[9rem] mr-2" />
-              <span className="text-4xl font-black text-white font-sans "></span>
+            <Link to="/">
+              <img src={logo} alt="logo" className="w-[9rem]" />
             </Link>
           </div>
           <div className="block lg:hidden">
@@ -56,7 +55,7 @@ const Navbar = () => {
             <div className="lg:flex-grow items-center lg:flex lg:justify-start">
               <Link
                 to="/"
-                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
+                className="block mt-4  lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Home
               </Link>
@@ -96,7 +95,11 @@ const Navbar = () => {
               >
                 Sports
               </Link>
-              <SearchBar onSearch={handleSearch} />
+
+              <div className="mt-4 lg:mt-0">
+                {" "}
+                <SearchBar onSearch={handleSearch} />
+              </div>
             </div>
             <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button
