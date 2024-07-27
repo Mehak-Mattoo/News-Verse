@@ -5,6 +5,7 @@ import Topheadlines from "./Topheadlines";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Error from "./Error";
+import Footer from "./Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -34,6 +35,8 @@ export default function Home() {
       {/* <Topheadlines /> */}
 
       <About />
+
+      <Footer />
     </>
   );
 }

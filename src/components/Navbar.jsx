@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../images/android-chrome-512x512.png";
+import logo from "../images/logo.png";
 import { FiSun, FiMoon } from "react-icons/fi";
-import SearchResults from "./SearchResults";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
@@ -24,7 +23,7 @@ const Navbar = () => {
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center">
-              <img src={logo} alt="logo" className="w-[3rem] mr-2" />
+              <img src={logo} alt="logo" className="w-[9rem] mr-2" />
               <span className="text-4xl font-black text-white font-sans "></span>
             </Link>
           </div>
