@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import newshome from "../images/news-home-.png";
 import About from "./About";
+import Topheadlines from "./Topheadlines";
 
 export default function Home() {
   useEffect(() => {
@@ -35,6 +36,8 @@ export default function Home() {
       </div>
 
       <About />
+
+      <Topheadlines />
     </>
   );
 }
