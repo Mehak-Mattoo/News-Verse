@@ -13,7 +13,7 @@ const Topheadlines = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": import.meta.env.VITE_TOP_HEADLINES_API_KEY,
+        "x-rapidapi-key": import.meta.env.VITE_NEWS_API_KEY,
         "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
       },
     };

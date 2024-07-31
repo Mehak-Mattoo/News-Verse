@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] py-2 z-10">
+      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] px-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/">
@@ -35,12 +35,14 @@ const Navbar = () => {
           <div className="block lg:hidden">
             <button
               onClick={toggleMenu}
+              aria-label="Toggle navigation menu"
               className="flex items-center px-3 py-2 border rounded text-orange-400 border-orange-500 hover:text-white hover:bg-orange-500"
             >
               <svg
                 className="fill-current h-3 w-3"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
               >
                 <title>Menu</title>
                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -65,6 +67,7 @@ const Navbar = () => {
               >
                 Business
               </Link>
+
               <Link
                 to="/entertainment"
                 className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"

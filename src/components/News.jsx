@@ -1,125 +1,156 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
-import SearchResults from "./SearchResults";
-import SearchBar from "./SearchBar";
 
-const News = (props) => {
+const News = ({ country, pageSize = 8, category, setProgress }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
+  const [error, setError] = useState(null);
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  const updateNews = async () => {
-    props.setProgress(10);
-    const url = `https://newsapi.org/v2/top-headlines?country=${
-      props.country
-    }&category=${props.category}&apiKey=${
-      import.meta.env.VITE_NEWS_API_KEY
-    }&page=${page}&pageSize=${props.pageSize}`;
+  const updateNews = useCallback(async () => {
+    setProgress(10);
+    const url = `https://real-time-news-data.p.rapidapi.com/topic-headlines?topic=${category}&limit=${pageSize}&country=${country}&lang=en`;
+    const options = {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": import.meta.env.VITE_NEWS_API_KEY,
+        "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
+      },
+    };
+
     setLoading(true);
-    let data = await fetch(url);
-    props.setProgress(30);
-    let parsedData = await data.json();
-    props.setProgress(70);
-    setArticles(parsedData.articles);
-    setTotalResults(parsedData.totalResults);
-    setLoading(false);
-    props.setProgress(100);
-  };
+    setError(null);
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log("API response:", result);
+
+      // Check if the result contains the expected data
+      if (result && result.data) {
+        setArticles(result.data);
+        setTotalResults(result.totalResults || 0); // Adjust if necessary
+      } else {
+        setArticles([]);
+        setTotalResults(0);
+      }
+
+      setLoading(false);
+      setProgress(100);
+    } catch (error) {
+      console.error("Fetch error:", error.message);
+      setError(error.message);
+      setLoading(false);
+      setProgress(100);
+    }
+  }, [category, country, pageSize, setProgress]);
 
   useEffect(() => {
-    document.title = `News Verse- ${capitalizeFirstLetter(props.category)} `;
+    document.title = `News Verse - ${capitalizeFirstLetter(category)}`;
     updateNews();
     // eslint-disable-next-line
-  }, []);
+  }, [category, updateNews]);
 
-  const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${
-      props.country
-    }&category=${props.category}&apiKey=${
-      import.meta.env.VITE_NEWS_API_KEY
-    }&page=${page + 1}&pageSize=${props.pageSize}`;
-    setPage(page + 1);
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    setArticles(articles.concat(parsedData.articles));
-    setTotalResults(parsedData.totalResults);
-  };
+  const fetchMoreData = useCallback(async () => {
+    const url = `https://real-time-news-data.p.rapidapi.com/topic-headlines?topic=${category}&limit=${pageSize}&country=${country}&lang=en`;
+    const options = {
+      method: "GET",
+      headers: {
+        "x-rapidapi-key": import.meta.env.VITE_NEWS_API_KEY,
+        "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
+      },
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const result = await response.json();
+      console.log("More data fetched:", result);
+
+      // Append new articles to existing articles
+      if (result && result.data) {
+        setArticles((prevArticles) => [
+          ...prevArticles,
+          ...(result.data || []),
+        ]);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error.message);
+    }
+  }, [category, country, pageSize]);
+
+  if (error) {
+    return <div className="text-center text-red-500">Error: {error}</div>;
+  }
 
   return (
-    <>
-      <div className="bg-[#C36A2D] min-h-screen dark:bg-[#0f172a]">
-        <h1
-          className="text-center"
-          style={{
-            padding: "3.5rem 0rem",
-            paddingTop: "7rem",
-            color: "#F7DCB9",
-            fontWeight: "900",
-            fontSize: "3.2rem",
-          }}
-        >
-          {capitalizeFirstLetter(props.category)} News
-        </h1>
+    <div className="bg-[#C36A2D] min-h-screen dark:bg-[#0f172a]">
+      <h1
+        className="text-center"
+        style={{
+          padding: "3.5rem 0rem",
+          paddingTop: "7rem",
+          color: "#F7DCB9",
+          fontWeight: "900",
+          fontSize: "3.2rem",
+        }}
+      >
+        {capitalizeFirstLetter(category)} News
+      </h1>
 
-        <InfiniteScroll
-          dataLength={articles.length}
-          next={fetchMoreData}
-          hasMore={articles.length !== totalResults}
-          loader={loading && <Spinner />}
-        >
-          <div className="container mx-auto px-4 ">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {articles.map((element, index) => {
-                return (
-                  <div
-                    className={`${
-                      (index + 1) % 4 === 0
-                        ? "md:col-span-1"
-                        : "md:col-span-1 lg:col-span-1 xl:col-span-1"
-                    }`}
-                    key={`${element.url}-${index}`} // Ensure uniqueness
-                  >
-                    <NewsItem
-                      title={element.title ? element.title : ""}
-                      description={
-                        element.description
-                          ? element.description.slice(0, 88)
-                          : ""
-                      }
-                      imgURL={element.urlToImage}
-                      newsURL={element.url}
-                      author={element.author}
-                      date={element.publishedAt}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+      <InfiniteScroll
+        dataLength={articles.length}
+        next={fetchMoreData}
+        hasMore={articles.length < totalResults} // Adjust this if totalResults is not in the response
+        loader={loading && <Spinner />}
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {articles.map((element, index) => (
+              <div
+                className={`${
+                  (index + 1) % 4 === 0
+                    ? "md:col-span-1"
+                    : "md:col-span-1 lg:col-span-1 xl:col-span-1"
+                }`}
+                key={`${element.link}-${index}`}
+              >
+                <NewsItem
+                  title={element.title || ""}
+                  description={
+                    element.snippet ? `${element.snippet.slice(0, 88)}...` : ""
+                  }
+                  imgURL={element.photo_url}
+                  newsURL={element.link}
+                  author={element.source_name}
+                  date={element.published_datetime_utc}
+                />
+              </div>
+            ))}
           </div>
-        </InfiniteScroll>
-      </div>
-    </>
+        </div>
+      </InfiniteScroll>
+    </div>
   );
-};
-
-News.defaultProps = {
-  country: "in",
-  pageSize: 8,
-  category: "general",
 };
 
 News.propTypes = {
   country: PropTypes.string,
   pageSize: PropTypes.number,
   category: PropTypes.string,
+  setProgress: PropTypes.func.isRequired,
 };
 
 export default News;

@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Topheadlines />
+      {/* <Topheadlines /> */}
 
       <About />
 
