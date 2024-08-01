@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#FEF3E2]  fixed w-full dark:bg-[#0f172a] py-2 z-10">
+      <nav className="bg-[#FEF3E2] px-4 fixed w-full dark:bg-[#0f172a] py-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/">

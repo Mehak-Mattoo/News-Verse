@@ -21,7 +21,7 @@ export default function NewsItem(props) {
         </h5>
 
         {description && (
-          <p className="card-text dark:text-gray-300 text-orange-500 text-sm mb-3 md:text-base text-center flex-grow">
+          <p className="card-text dark:text-gray-300 font-medium text-orange-600 text-sm mb-3 md:text-base text-center flex-grow">
             {description}
           </p>
         )}

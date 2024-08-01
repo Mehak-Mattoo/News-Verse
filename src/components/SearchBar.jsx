@@ -11,6 +11,12 @@ const SearchBar = ({ onSearch }) => {
     event.preventDefault();
     if (!query) return;
     onSearch(query); // Call the parent function to perform the search
+
+    // Clear the query after 10 seconds
+    setTimeout(() => {
+      setQuery("");
+      document.querySelector('input[name="search"]').focus(); // Refocus the input field
+    }, 10000);
   };
 
   const handleClear = () => {

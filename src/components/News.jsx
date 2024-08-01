@@ -3,6 +3,7 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ErrorMsg from "./ErrorMsg";
 
 const News = ({ country, pageSize = 8, category, setProgress }) => {
   const [articles, setArticles] = useState([]);
@@ -11,7 +12,7 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
   const [error, setError] = useState(null);
 
   const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
   };
 
   const updateNews = useCallback(async () => {
@@ -92,45 +93,53 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
   }, [category, country, pageSize]);
 
   if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
+    return (
+      <div className="text-center text-red-500">
+        Error: <ErrorMsg />{" "}
+      </div>
+    );
   }
 
   return (
     <div className="bg-[#C36A2D] min-h-screen dark:bg-[#0f172a]">
-      <h1 className="text-center pt-[5rem] pb-[2rem] text-2xl  sm:text-4xl md:text-5xl  text-white font-bold ">
-        {category} NEWS
+      <h1 className="text-center pt-[7rem] pb-[2rem] text-2xl  sm:text-4xl md:text-5xl  text-white font-bold ">
+        {capitalizeFirstLetter(category)} News
       </h1>
 
-      <InfiniteScroll
-        dataLength={articles.length}
-        next={fetchMoreData}
-        hasMore={articles.length < totalResults} // Adjust this if totalResults is not in the response
-        loader={loading && <Spinner />}
-      >
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {articles.map((element, index) => (
-              <div
-                className={`${
-                  (index + 1) % 4 === 0
-                    ? "md:col-span-1"
-                    : "md:col-span-1 lg:col-span-1 xl:col-span-1"
-                }`}
-                key={`${element.link}-${index}`}
-              >
-                <NewsItem
-                  title={element.title || ""}
-                  description={element.snippet || ""}
-                  imgURL={element.photo_url}
-                  newsURL={element.link}
-                  author={element.source_name}
-                  date={element.published_datetime_utc}
-                />
-              </div>
-            ))}
+      {loading && <Spinner />}
+
+      {!loading && (
+        <InfiniteScroll
+          dataLength={articles.length}
+          next={fetchMoreData}
+          hasMore={articles.length < totalResults} // Adjust this if totalResults is not in the response
+          loader={<Spinner />}
+        >
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+              {articles.map((element, index) => (
+                <div
+                  className={`${
+                    (index + 1) % 4 === 0
+                      ? "md:col-span-1"
+                      : "md:col-span-1 lg:col-span-1 xl:col-span-1"
+                  }`}
+                  key={`${element.link}-${index}`}
+                >
+                  <NewsItem
+                    title={element.title || ""}
+                    description={element.snippet || ""}
+                    imgURL={element.photo_url}
+                    newsURL={element.link}
+                    author={element.source_name}
+                    date={element.published_datetime_utc}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </InfiniteScroll>
+        </InfiniteScroll>
+      )}
     </div>
   );
 };

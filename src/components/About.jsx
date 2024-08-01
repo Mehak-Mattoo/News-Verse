@@ -55,7 +55,7 @@ const features = [
 const About = () => {
   return (
     <div className="bg-[#C36A2D] dark:bg-[#0f172a] py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto ">
         <h2 className=" dark:text-orange-500 text-xl  sm:text-2xl md:text-4xl lg:text-6xl  font-extrabold  text-orange-100 mb-12">
           About NewsVerse
         </h2>

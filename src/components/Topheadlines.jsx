@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
-import Error from "./Error";
+import Error from "./ErrorMsg";
 
 const Topheadlines = () => {
   const [headlines, setHeadlines] = useState([]);
@@ -49,7 +49,7 @@ const Topheadlines = () => {
 
   return (
     <div className="px-10 py-5 bg-[#C36A2D] dark:bg-[#0f172a]">
-      <h2 className="text-xl  sm:text-2xl md:text-4xl lg:text-6xl  dark:text-orange-500 font-extrabold  text-orange-200 mb-12">
+      <h2 className="text-xl pt-8  sm:text-2xl md:text-4xl lg:text-6xl  dark:text-orange-500 font-extrabold  text-orange-100 mb-12">
         Top Headlines
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
