@@ -56,14 +56,14 @@ const About = () => {
   return (
     <div className="bg-[#C36A2D] dark:bg-[#0f172a] py-12">
       <div className="container mx-auto px-4">
-        <h2 className=" dark:text-orange-500 text-xl  sm:text-2xl md:text-4xl lg:text-6xl  font-extrabold  text-orange-200 mb-12">
+        <h2 className=" dark:text-orange-500 text-xl  sm:text-2xl md:text-4xl lg:text-6xl  font-extrabold  text-orange-100 mb-12">
           About NewsVerse
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 cursor-pointer">
           {features.map((feature, index) => (
             <div
               key={index}
-              className=" bg-[#F8EDED] dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
+              className=" bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex items-center justify-center h-30 mb-4">
                 {feature.icon}

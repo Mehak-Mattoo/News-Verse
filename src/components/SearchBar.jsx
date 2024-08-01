@@ -26,9 +26,9 @@ const SearchBar = ({ onSearch }) => {
         value={query}
         onChange={handleInputChange}
         placeholder="Search for News..."
-        className="p-2 rounded-md border border-gray-300 dark:border-gray-700 text-black pl-10 pr-14" // Add padding for clear button
+        className="p-2 rounded-md border border-orange-700 dark:border-gray-700 text-black pl-10 pr-14" // Add padding for clear button
       />
-      {query && (
+      {query ? (
         <button
           type="button"
           onClick={handleClear}
@@ -50,10 +50,31 @@ const SearchBar = ({ onSearch }) => {
             />
           </svg>
         </button>
+      ) : (
+        <button
+          type="submit"
+          className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400 hover:text-gray-600"
+          aria-label="Search"
+        >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M21 21l-4.35-4.35M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"
+            />
+          </svg>
+        </button>
       )}
       <button
         type="submit"
-        className="bg-orange-400 font-medium dark:bg-orange-500 text-white py-2 px-4 rounded-md ml-2 hover:bg-[#ffa35c] dark:hover:bg-[#ee6903]"
+        className="bg-orange-400 font-medium dark:bg-orange-500 text-white py-2 px-4 rounded-md ml-2 hover:bg-[#ee6903]"
       >
         Search
       </button>

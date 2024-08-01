@@ -6,14 +6,6 @@ import Home from "./components/Home";
 import News from "./components/News";
 import SearchResults from "./components/SearchResults";
 import "./index.css";
-import Health from "./components/NewsTopics/Health";
-import Science from "./components/NewsTopics/Science";
-import Tech from "./components/NewsTopics/Tech";
-import Entertainment from "./components/NewsTopics/Entertainment";
-import Business from "./components/NewsTopics/Business";
-import World from "./components/NewsTopics/World";
-import National from "./components/NewsTopics/National";
-import Sports from "./components/NewsTopics/Sports";
 
 function App() {
   const [progress, setProgress] = useState(0);
@@ -21,7 +13,7 @@ function App() {
   return (
     <>
       <Router>
-        <LoadingBar color="#FF6464" height={3} progress={progress} />
+        <LoadingBar color="#FF6464" height={4} progress={progress} />
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -92,35 +84,6 @@ function App() {
           />
         </Routes>
       </Router>
-
-      {/* <Routes path="/health" element={<Health />} />
-          <Routes path="/world" element={<World />} />
-
-          <Routes path="/technology" element={<Tech />} />
-          <Routes path="/science" element={<Science />} />
-          <Routes path="/national" element={<National />} />
-          <Routes path="/business" element={<Business />} />
-          <Routes path="/entertainment" element={<Entertaiment />} />
-        </Routes>
-      </Router>
-
-    <Router>
-        <LoadingBar color="#FF6464" height={3} progress={progress} />
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/news" element={<Home />} />
-          <Route path="/search/:query" element={<SearchResults />} />
-          <Route path="/health" element={<Health />} />
-          <Route path="/world" element={<World />} />
-          <Route path="/technology" element={<Tech />} />
-          <Route path="/science" element={<Science />} />
-          <Route path="/national" element={<National />} />
-          <Route path="/business" element={<Business />} />
-          <Route path="/entertainment" element={<Entertainment />} />
-          <Route path="/sports" element={<Sports />} />
-        </Routes> 
-      </Router> */}
     </>
   );
 }

@@ -6,6 +6,7 @@ import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Error from "./Error";
 import Footer from "./Footer";
+import Spinner from "./Spinner";
 
 export default function Home() {
   useEffect(() => {
@@ -13,7 +14,7 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="flex bg-[#F7DCB9] items-center flex-col md:flex-row h-2/4 md:min-h-screen dark:bg-[#0f172a] ">
+      <div className="flex bg-[#FEF3E2] items-center flex-col md:flex-row h-2/4 pb-5 dark:bg-[#0f172a] ">
         <div className=" md:w-1/2">
           <img
             src={newshome}

@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-[#F7DCB9] mb-4 fixed w-full dark:bg-[#0f172a] px-2 z-10">
+      <nav className="bg-[#FEF3E2]  fixed w-full dark:bg-[#0f172a] py-2 z-10">
         <div className="container mx-auto flex items-center justify-between flex-wrap">
           <div className="flex items-center flex-shrink-0">
             <Link to="/">
@@ -36,7 +36,7 @@ const Navbar = () => {
             <button
               onClick={toggleMenu}
               aria-label="Toggle navigation menu"
-              className="flex items-center px-3 py-2 border rounded text-orange-400 border-orange-500 hover:text-white hover:bg-orange-500"
+              className="flex items-center px-3 py-2 border-2 rounded text-orange-500 border-orange-500 hover:text-white hover:bg-orange-500"
             >
               <svg
                 className="fill-current h-3 w-3"
@@ -107,7 +107,7 @@ const Navbar = () => {
             <div className="flex items-center mt-4 lg:mt-0 lg:flex-shrink-0">
               <button
                 onClick={toggleDarkMode}
-                className={`flex ml-2 items-center p-3 mr-3 rounded-lg 
+                className={`flex ml-0 items-center p-3  md:ml-3 rounded-lg 
     ${
       isDarkMode
         ? "bg-gray-500 dark:bg-gray-600 text-gray-100"

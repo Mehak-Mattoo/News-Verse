@@ -1,45 +1,25 @@
 import React from "react";
 
-const loaderStyles = `
-.loader, .loader:before, .loader:after {
-  border-radius: 50%;
-  width: 3.5em;
-  height: 3.5em;
-  animation-fill-mode: both;
-  animation: bblFadInOut 1.8s infinite ease-in-out;
-}
-.loader {
-  color: #FFF;
-  font-size: 7px;
-  position: relative;
-  text-indent: -9999em;
-  transform: translateZ(0);
-  animation-delay: -0.16s;
-}
-.loader:before,
-.loader:after {
-  content: '';
-  position: absolute;
-  top: 0;
-}
-.loader:before {
-  left: -3.5em;
-  animation-delay: -0.32s;
-}
-.loader:after {
-  left: 3.5em;
-}
-@keyframes bblFadInOut {
-  0%, 80%, 100% { box-shadow: 0 2.5em 0 -1.3em }
-  40% { box-shadow: 0 2.5em 0 0 }
-}
-`;
-
 const Spinner = () => {
+  const loaderStyles = {
+    width: "120px",
+    height: "20px",
+    borderRadius: "20px",
+    background:
+      "repeating-linear-gradient(135deg, #f03355 0 10px, #ffa516 0 20px) 0/0% no-repeat, repeating-linear-gradient(135deg, #ddd 0 10px, #eee 0 20px) 0/100%",
+    animation: "loaderAnimation 2s infinite",
+  };
+
+  const keyframesStyles = `
+    @keyframes loaderAnimation {
+      100% { background-size: 100%; }
+    }
+  `;
+
   return (
-    <div>
-      <style>{loaderStyles}</style>
-      <span className="loader"></span>
+    <div className="flex justify-center items-center ">
+      <style>{keyframesStyles}</style>
+      <span style={loaderStyles}></span>
     </div>
   );
 };

@@ -97,17 +97,8 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
 
   return (
     <div className="bg-[#C36A2D] min-h-screen dark:bg-[#0f172a]">
-      <h1
-        className="text-center"
-        style={{
-          padding: "3.5rem 0rem",
-          paddingTop: "7rem",
-          color: "#F7DCB9",
-          fontWeight: "900",
-          fontSize: "3.2rem",
-        }}
-      >
-        {capitalizeFirstLetter(category)} News
+      <h1 className="text-center pt-[5rem] pb-[2rem] text-2xl  sm:text-4xl md:text-5xl  text-white font-bold ">
+        {category} NEWS
       </h1>
 
       <InfiniteScroll
@@ -129,9 +120,7 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
               >
                 <NewsItem
                   title={element.title || ""}
-                  description={
-                    element.snippet ? `${element.snippet.slice(0, 88)}...` : ""
-                  }
+                  description={element.snippet || ""}
                   imgURL={element.photo_url}
                   newsURL={element.link}
                   author={element.source_name}
