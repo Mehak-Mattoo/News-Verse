@@ -44,7 +44,7 @@ function App() {
 
           <Route
             exact
-            path="/general"
+            path="/world"
             element={
               <News setProgress={setProgress} country="in" category="WORLD" />
             }

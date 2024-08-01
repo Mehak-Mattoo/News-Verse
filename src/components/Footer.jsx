@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-wrap justify-between">
           <div className="w-full md:w-1/3 mb-6 md:mb-0">
             <h5 className="text-lg md:text-xl font-semibold mb-2  dark:text-white">
-              About Us
+              About NewsVerse
             </h5>
             <p className="text-orange-600 dark:text-gray-500 ">
               We deliver the latest news and live events to keep you updated
@@ -21,25 +21,25 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="https://facebook.com"
-                className="text-orange-600  dark:text-sky-500 hover:text-white"
+                className="text-orange-600  dark:text-sky-500  hover:text-orange-900"
               >
                 <BsFacebook />
               </a>
               <a
                 href="https://twitter.com"
-                className="text-orange-600  dark:text-sky-500 hover:text-white"
+                className="text-orange-600  dark:text-sky-500  hover:text-orange-900"
               >
                 <BsTwitter />
               </a>
               <a
                 href="https://instagram.com"
-                className="text-orange-600 dark:text-sky-500 hover:text-white"
+                className="text-orange-600 dark:text-sky-500  hover:text-orange-900"
               >
                 <BsInstagram />
               </a>
               <a
                 href="https://linkedin.com"
-                className="text-orange-600  dark:text-sky-500 hover:text-white"
+                className="text-orange-600  dark:text-sky-500 hover:text-orange-900"
               >
                 <BsLinkedin />
               </a>

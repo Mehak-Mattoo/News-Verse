@@ -5,11 +5,12 @@ import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ErrorMsg from "./ErrorMsg";
 
-const News = ({ country, pageSize = 8, category, setProgress }) => {
+const News = ({ country, pageSize = 100, category, setProgress }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
   const [error, setError] = useState(null);
+  const [page, setPage] = useState(1); // To manage pagination
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -17,7 +18,7 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
 
   const updateNews = useCallback(async () => {
     setProgress(10);
-    const url = `https://real-time-news-data.p.rapidapi.com/topic-headlines?topic=${category}&limit=${pageSize}&country=${country}&lang=en`;
+    const url = `https://real-time-news-data.p.rapidapi.com/topic-headlines?topic=${category}&limit=${pageSize}&country=${country}&lang=en&page=${page}`;
     const options = {
       method: "GET",
       headers: {
@@ -39,7 +40,7 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
 
       // Check if the result contains the expected data
       if (result && result.data) {
-        setArticles(result.data);
+        setArticles((prevArticles) => [...prevArticles, ...result.data]);
         setTotalResults(result.totalResults || 0); // Adjust if necessary
       } else {
         setArticles([]);
@@ -54,43 +55,19 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
       setLoading(false);
       setProgress(100);
     }
-  }, [category, country, pageSize, setProgress]);
+  }, [category, country, pageSize, page, setProgress]);
 
   useEffect(() => {
     document.title = `News Verse - ${capitalizeFirstLetter(category)}`;
+    setPage(1); // Reset page to 1 when category changes
+    setArticles([]); // Clear articles when category changes
     updateNews();
     // eslint-disable-next-line
   }, [category, updateNews]);
 
-  const fetchMoreData = useCallback(async () => {
-    const url = `https://real-time-news-data.p.rapidapi.com/topic-headlines?topic=${category}&limit=${pageSize}&country=${country}&lang=en`;
-    const options = {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": import.meta.env.VITE_NEWS_API_KEY,
-        "x-rapidapi-host": "real-time-news-data.p.rapidapi.com",
-      },
-    };
-
-    try {
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log("More data fetched:", result);
-
-      // Append new articles to existing articles
-      if (result && result.data) {
-        setArticles((prevArticles) => [
-          ...prevArticles,
-          ...(result.data || []),
-        ]);
-      }
-    } catch (error) {
-      console.error("Fetch error:", error.message);
-    }
-  }, [category, country, pageSize]);
+  const fetchMoreData = useCallback(() => {
+    setPage((prevPage) => prevPage + 1); // Increment page number for next fetch
+  }, []);
 
   if (error) {
     return (
@@ -102,12 +79,11 @@ const News = ({ country, pageSize = 8, category, setProgress }) => {
 
   return (
     <div className="bg-[#C36A2D] min-h-screen dark:bg-[#0f172a]">
-      <h1 className="text-center pt-[7rem] pb-[2rem] text-2xl  sm:text-4xl md:text-5xl  text-white font-bold ">
+      <h1 className="text-center pt-[7rem] pb-[2rem] text-2xl sm:text-4xl md:text-5xl text-white font-bold">
         {capitalizeFirstLetter(category)} News
       </h1>
-
-      {loading && <Spinner />}
-
+      {loading && page === 1 && <Spinner />}{" "}
+      {/* Show spinner only when loading initial data */}
       {!loading && (
         <InfiniteScroll
           dataLength={articles.length}

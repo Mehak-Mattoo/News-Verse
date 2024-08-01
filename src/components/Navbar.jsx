@@ -61,6 +61,7 @@ const Navbar = () => {
               >
                 Home
               </Link>
+
               <Link
                 to="/business"
                 className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
@@ -79,6 +80,13 @@ const Navbar = () => {
                 className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
               >
                 Health
+              </Link>
+
+              <Link
+                to="/world"
+                className="block mt-4 lg:inline-block lg:mt-0 font-semibold  dark:text-orange-500 text-orange-400 hover:text-orange-500 mr-4"
+              >
+                World
               </Link>
               <Link
                 to="/science"
