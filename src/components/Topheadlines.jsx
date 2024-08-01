@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import Error from "./ErrorMsg";
+import ErrorMsg from "./ErrorMsg";
 
 const Topheadlines = () => {
   const [headlines, setHeadlines] = useState([]);
@@ -33,25 +34,14 @@ const Topheadlines = () => {
     fetchNews();
   }, []);
 
-  if (loading)
-    return (
-      <div>
-        <Spinner />
-      </div>
-    );
-  if (error)
-    return (
-      <div>
-        {" "}
-        <Error />{" "}
-      </div>
-    );
-
   return (
-    <div className="px-10 py-5 bg-[#C36A2D] dark:bg-[#0f172a]">
+    <div className="p-10  bg-[#C36A2D] dark:bg-[#0f172a]">
       <h2 className="text-xl pt-8  sm:text-2xl md:text-4xl lg:text-6xl  dark:text-orange-500 font-extrabold  text-orange-100 mb-12">
         Top Headlines
       </h2>
+
+      {loading && <Spinner />}
+      {error && <ErrorMsg />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {headlines.map((headline, index) => (
           <div
